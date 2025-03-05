@@ -1,8 +1,9 @@
 from utils import *
-
-url = "Special:Random"
+import requests
 
 def create_base():
-    for _ in range(N_START):
-        download_page(url)
+    for i in range(N_START):
+        debug_print(i)
+        r = requests.get(f"{BASE_URL}{RANDOM_ENDPOINT}")
+        download_page(r.url.split("/")[-1])
 

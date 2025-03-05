@@ -5,6 +5,7 @@ import os
 
 
 def crawl_page(name):
+    print(f"Starting to crawl {BASE_URL}{name}")
     with open(f"{EXTRACTED_PREFIX}{name}", "rb") as f:
         li = pickle.load(f)
         for no, reference in li[:MAX_TO_DOWNLOAD_PER_PAGE]:
