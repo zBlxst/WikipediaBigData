@@ -1,4 +1,4 @@
-DEBUG = False
+DEBUG = True
 
 BASE_URL = "https://nrm.wikipedia.org/wiki/"
 RANDOM_ENDPOINT = "Sp%C3%A9cial:Page_au_hasard"
@@ -13,7 +13,7 @@ MAX_TO_CRAWL = 1
 MAX_TO_DOWNLOAD_PER_PAGE = 100000
 MAX_TO_MAP = 1000
 N_ROUNDS = 10000
-N_START = 10
+N_START = 1000
 
 # N_TOTAL_PAGES = 6_962_454 # From https://en.wikipedia.org/wiki/Wikipedia:Size_of_Wikipedia#Annual_growth_rate_for_the_English_Wikipedia
 N_TOTAL_PAGES = 5_031 # From https://nrm.wikipedia.org/wiki/Sp%C3%A9cial:Statistiques
