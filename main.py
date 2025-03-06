@@ -37,7 +37,9 @@ def map_dijkstra(spark, n_max=None):
         with open(f"{RES_PREFIX}{num_to_name[i]}", "wb") as f:
             pickle.dump(d, f)
 
-
+def print_reachables(spark, n_max=None):
+    df = mapper.count_reachables(spark, n_max).map(lambda x: (unquote(num_to_name[x[0]]), x[1])).toDF(["Name", "Reachable"])
+    df.show()
 
 with open(f"{TARGET_PREFIX}number_to_name", "rb") as f:
     num_to_name = pickle.load(f)
@@ -62,4 +64,5 @@ if __name__ == "__main__":
     # for i in range(3):
     #     print_dists(spark, num_to_name[i])
     
-    print_max_distances(spark, n_max=10)
+    # print_max_distances(spark, n_max=10)
+    print_reachables(spark, n_max=20)

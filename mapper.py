@@ -3,6 +3,8 @@ import os
 import pickle
 
 from utils import *
+from pyspark.sql.functions import reduce
+
 
     
 extract_links = lambda x: (x[0], list(filter(lambda x: x[1] not in FALSE_LINKS, enumerate(dict.fromkeys(re.findall(r'href="/wiki/([^":]*)"', x[1]))))))
@@ -89,6 +91,23 @@ def count_dists(spark, index):
     counts = df.groupBy("dist").count().orderBy("dist", ascending=True)
 
     return counts
+
+def count_reachables(spark, n_max=None):
+    global adjacency_matrix
+    if adjacency_matrix is None:
+        with open(f"{TARGET_PREFIX}adjacency_matrix", "rb") as f:
+           adjacency_matrix = pickle.load(f)
+
+    if n_max is None:
+        n_max = len(adjacency_matrix)
+    data = list(range(n_max))
+    rdd = spark.sparkContext.parallelize(data)
+    rdd1 = rdd.map(lambda i: (i, dijkstra(i)[0]))
+    rdd2 = rdd1.map(lambda x: (x[0], len(list(filter(lambda x: x >= 0, x[1])))))
+    return rdd2
+
+
+
 
 def max_distances(spark, n_max=None):
     global adjacency_matrix
