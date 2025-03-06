@@ -3,22 +3,27 @@ DEBUG = True
 BASE_URL = "https://nrm.wikipedia.org/wiki/"
 RANDOM_ENDPOINT = "Sp%C3%A9cial:Page_au_hasard"
 LANGUAGE = "norman"
+FALSE_LINKS = ["F%C3%A9chouner_un_compte"] # This link is referenced in the home page but leads to a 404
 
-RAW_PREFIX = "target/raw/"
-EXTRACTED_PREFIX = "target/extracted/"
-CRAWLED_PREFIX = "target/crawled/"
+TARGET_PREFIX = "target/"
+RAW_PREFIX = f"{TARGET_PREFIX}raw/"
+EXTRACTED_PREFIX = f"{TARGET_PREFIX}extracted/"
+CRAWLED_PREFIX = f"{TARGET_PREFIX}crawled/"
+RES_PREFIX = f"{TARGET_PREFIX}res/"
+
 
 
 MAX_TO_CRAWL = 1
 MAX_TO_DOWNLOAD_PER_PAGE = 100000
 MAX_TO_MAP = 1000
 N_ROUNDS = 10000
-N_START = 1000
+N_START = 1
 
-# N_TOTAL_PAGES = 6_962_454 # From https://en.wikipedia.org/wiki/Wikipedia:Size_of_Wikipedia#Annual_growth_rate_for_the_English_Wikipedia
-N_TOTAL_PAGES = 5_031 # From https://nrm.wikipedia.org/wiki/Sp%C3%A9cial:Statistiques
+# This number of pages is underevaluated (or just old)
+N_TOTAL_PAGES = 5_031 # From https://nrm.wikipedia.org/wiki/Sp%C3%A9cial:Statistiques 
 
 
+adjacency_matrix = None
 
 import requests
 import os

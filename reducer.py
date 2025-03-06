@@ -17,7 +17,6 @@ def process_pickle_files():
     return df
 
 def main():
-
     df = process_pickle_files()
     term_counts = df.groupBy("term").count().orderBy("count", ascending=False)
 
