@@ -58,8 +58,8 @@ if __name__ == "__main__":
     crawler.crawl_everything(spark)
     translator.create_matrix()
 
-    # for i in range(5):
-    #     shortest_path(num_to_name[random.randrange(N_TOTAL_PAGES)], num_to_name[random.randrange(N_TOTAL_PAGES)])
+    for i in range(5):
+        shortest_path(num_to_name[random.randrange(N_TOTAL_PAGES)], num_to_name[random.randrange(N_TOTAL_PAGES)])
 
     # for i in range(3):
     #     print_dists(spark, num_to_name[i])
