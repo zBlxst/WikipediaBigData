@@ -3,12 +3,12 @@ import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode, col, count
 
-FRED_WORKING_DIR = "Big_Data/WikipediaBigData"
+WORKING_DIR = ""
 
 spark = SparkSession.builder.appName("WikipediaReducer").getOrCreate()
 
 
-df = spark.read.parquet(os.path.join(FRED_WORKING_DIR, "data.parquet"))
+df = spark.read.parquet(os.path.join(WORKING_DIR, "data.parquet"))
 df_exploded = df.withColumn("cited_article", explode(col("cited_articles")))
 
 

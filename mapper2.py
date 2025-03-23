@@ -7,7 +7,7 @@ from pyspark.sql.types import StructType, StructField, StringType, ArrayType
 
 from utils import *
 
-FRED_WORKING_DIR = "Big_Data/WikipediaBigData"
+WORKING_DIR = ""
 
 def get_wikipedia_links(article):
     print(f"{article}")
@@ -55,4 +55,4 @@ def process_articles(input_file, output_file):
     print(f"Données enregistrées dans {output_file}")
 
 if __name__ == "__main__":
-    process_articles(os.path.join(FRED_WORKING_DIR, "frwiki-latest-all-titles-in-ns0"), os.path.join(FRED_WORKING_DIR, "data.parquet"))
+    process_articles(os.path.join(WORKING_DIR, "frwiki-latest-all-titles-in-ns0"), os.path.join(WORKING_DIR, "data.parquet"))
